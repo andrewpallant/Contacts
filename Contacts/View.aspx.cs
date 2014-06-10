@@ -38,13 +38,13 @@ namespace Contacts
             {
                 // Look Up Contact
                 Contact contact = Contact.getByID(ContactID);
-                txtName.Text = contact.Name;
-                txtAddress.Text = contact.Address;
-                txtCity.Text = contact.City;
-                txtState.Text = contact.State;
-                txtZip.Text = contact.Zip;
-                txtEmail.Text = contact.Email;
-                txtTwitter.Text = contact.Twitter;
+                rofcName.ValueText = contact.Name;
+                rofcAddress.ValueText = contact.Address;
+                rofcCity.ValueText = contact.City;
+                rofcState.ValueText = contact.State;
+                rofcZip.ValueText = contact.Zip;
+                rofcEmail.ValueText = contact.Email;
+                rofcTwitter.ValueText = contact.Twitter;
             }
         }
 

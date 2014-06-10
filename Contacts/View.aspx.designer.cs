@@ -22,67 +22,67 @@ namespace Contacts {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl subtitle;
         
         /// <summary>
-        /// txtName control.
+        /// rofcName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtName;
+        protected global::Contacts.controls.ReadOnlyFormControl rofcName;
         
         /// <summary>
-        /// txtAddress control.
+        /// rofcAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtAddress;
+        protected global::Contacts.controls.ReadOnlyFormControl rofcAddress;
         
         /// <summary>
-        /// txtCity control.
+        /// rofcCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtCity;
+        protected global::Contacts.controls.ReadOnlyFormControl rofcCity;
         
         /// <summary>
-        /// txtState control.
+        /// rofcState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtState;
+        protected global::Contacts.controls.ReadOnlyFormControl rofcState;
         
         /// <summary>
-        /// txtZip control.
+        /// rofcZip control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtZip;
+        protected global::Contacts.controls.ReadOnlyFormControl rofcZip;
         
         /// <summary>
-        /// txtEmail control.
+        /// rofcEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtEmail;
+        protected global::Contacts.controls.ReadOnlyFormControl rofcEmail;
         
         /// <summary>
-        /// txtTwitter control.
+        /// rofcTwitter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtTwitter;
+        protected global::Contacts.controls.ReadOnlyFormControl rofcTwitter;
         
         /// <summary>
         /// btnDelete control.

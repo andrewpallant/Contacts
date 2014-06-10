@@ -30,7 +30,7 @@ namespace Contacts
                 {
                     // Look Up Contact
                     Contact contact = Contact.getByID(ContactID);
-                    txtName.Text = contact.Name;
+                    txtName.ValueText = contact.Name;
                     txtAddress.Text = contact.Address;
                     txtCity.Text = contact.City;
                     txtState.Text = contact.State;
@@ -42,7 +42,7 @@ namespace Contacts
                 else
                 {
                     // Treat as New
-                    txtName.Text = "";
+                    txtName.ValueText = "";
                     txtAddress.Text = "";
                     txtCity.Text = "";
                     txtState.Text = "";
@@ -65,7 +65,7 @@ namespace Contacts
                 contact = Contact.getByID(ContactID);
             }
 
-            contact.Name = txtName.Text;
+            contact.Name = txtName.ValueText;
             contact.Address = txtAddress.Text;
             contact.City = txtCity.Text;
             contact.State = txtState.Text;

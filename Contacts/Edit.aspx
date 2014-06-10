@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="Contacts.Edit" %>
+<%@ Register assembly="Contacts" namespace="Contacts.controls" tagprefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -10,12 +12,7 @@
         <h4>Edit</h4>
         <hr />
         <div class="form-horizontal">
-            <div class="form-group">
-                <span class="control-label col-md-2">Name</span>
-                <div class="col-md-10">
-                    <asp:TextBox runat="server" ID="txtName" CssClass="form-control"></asp:TextBox>
-                </div>
-            </div>
+            <cc1:FormControl runat="server" RowClass="form-group" ID="txtName" LabelClass="control-label" Col1Class="col-md-2" LabelText="Name" Col2Class="col-md-10" InputClass="form-control" />
 
             <div class="form-group">
                 <span class="control-label col-md-2">Address</span>

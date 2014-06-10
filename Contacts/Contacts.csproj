@@ -91,6 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\Contact.cs" />
+    <Compile Include="controls\FormControl.cs" />
+    <Compile Include="controls\ReadOnlyFormControl.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
