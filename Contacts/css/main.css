@@ -16,3 +16,15 @@ tbody td
     border:none;
     border-bottom: 1px solid #555;
 }
+
+.randomQuote
+{
+    padding:10px;
+    line-height:20px;
+}
+
+.shadow {
+  -moz-box-shadow:    3px 3px 3px 3px #ccc;
+  -webkit-box-shadow: 3px 3px 3px 3px #ccc;
+  box-shadow:         3px 3px 3px 3px #ccc;
+}

@@ -15,6 +15,12 @@ namespace Contacts
             get { return (Int32)(ViewState["ContactID"] ?? -1); }
         }
 
+        public Contact SaveContact
+        {
+            set { ViewState["SaveContact"] = value; }
+            get { return (Contact)ViewState["SaveContact"]; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -30,6 +36,7 @@ namespace Contacts
                 {
                     // Look Up Contact
                     Contact contact = Contact.getByID(ContactID);
+                    SaveContact = contact;
                     txtName.ValueText = contact.Name;
                     txtAddress.Text = contact.Address;
                     txtCity.Text = contact.City;
@@ -38,6 +45,7 @@ namespace Contacts
                     txtEmail.Text = contact.Email;
                     txtTwitter.Text = contact.Twitter;
 
+                    ctlPhoneNumbers1.ContactID = contact.ContactID;
                 }
                 else
                 {
@@ -50,7 +58,12 @@ namespace Contacts
                     txtTwitter.Text = "";
                 }
             }
+            else{
+                ctlPhoneNumbers1.ContactID = SaveContact.ContactID;
+            }
         }
+
+        
 
         /// <summary>
         /// Save Contact Record
@@ -62,7 +75,7 @@ namespace Contacts
             Contact contact = new Contact();
             if (ContactID > -1)
             {
-                contact = Contact.getByID(ContactID);
+                contact = SaveContact;
             }
 
             contact.Name = txtName.ValueText;
@@ -77,5 +90,7 @@ namespace Contacts
             // Assume Saved - Should Really Check for return
             Response.Redirect("~/Default.aspx");
         }
+
+        
     }
 }

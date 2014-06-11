@@ -57,6 +57,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ContactListing.aspx" />
+    <Content Include="controls\ctlPhoneNumbers.ascx" />
+    <Content Include="images\face.png" />
     <Content Include="Main.Master" />
     <Content Include="css\bootstrap-theme.css.map" />
     <Content Include="css\bootstrap.css.map" />
@@ -86,12 +89,29 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.tablesorter.js" />
+    <Content Include="Services\autoComplete.asmx" />
     <Content Include="View.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\Contact.cs" />
+    <Compile Include="App_Code\ContactPhone.cs" />
+    <Compile Include="ContactListing.aspx.cs">
+      <DependentUpon>ContactListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContactListing.aspx.designer.cs">
+      <DependentUpon>ContactListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\ctlPhoneNumbers.ascx.cs">
+      <DependentUpon>ctlPhoneNumbers.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\ctlPhoneNumbers.ascx.designer.cs">
+      <DependentUpon>ctlPhoneNumbers.ascx</DependentUpon>
+    </Compile>
     <Compile Include="controls\FormControl.cs" />
+    <Compile Include="controls\RandomQuotes.cs" />
     <Compile Include="controls\ReadOnlyFormControl.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -115,6 +135,10 @@
       <DependentUpon>Main.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\autoComplete.asmx.cs">
+      <DependentUpon>autoComplete.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="View.aspx.cs">
       <DependentUpon>View.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

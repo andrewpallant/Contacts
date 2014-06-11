@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Contacts
 {
+    [Serializable]
     public class Contact
     {
         public Int32 ContactID { get; set; }
@@ -17,14 +18,24 @@ namespace Contacts
         public String Zip { get; set; }
         public String Email { get; set; }
         public String Twitter { get; set; }
-        //public List<ContactPhone> PhoneNumbers { get; set; }
+        public List<ContactPhone> PhoneNumbers { get; set; }
 
         public Contact()
         {
-            //PhoneNumbers = new List<ContactPhones>();
+            PhoneNumbers = new List<ContactPhone>();
+        }
+
+        public Contact(SqlDataReader row, Boolean retrievePhoneNumbers)
+        {
+            PopulateContact(row, retrievePhoneNumbers);
         }
 
         public Contact(SqlDataReader row)
+        {
+            PopulateContact(row, true);
+        }
+
+        public void PopulateContact(SqlDataReader row, Boolean retrievePhoneNumbers)
         {
             ContactID = (Int32)row["ContactID"];
             Name = (String)row["Name"];
@@ -35,7 +46,10 @@ namespace Contacts
             Email = (String)row["Email"];
             Twitter = (String)row["Twitter"];
 
-            //PhoneNumbers
+            if (retrievePhoneNumbers)
+            {
+                PhoneNumbers = ContactPhone.GetPhoneNumbersByContactID(ContactID);
+            }
         }
 
         public static Contact getByID(Int32 id)
@@ -73,7 +87,7 @@ namespace Contacts
 
             while (reader.Read())
             {
-                contactCollection.Add(new Contact(reader));
+                contactCollection.Add(new Contact(reader, false));
             }
 
             if (conn.State > 0)

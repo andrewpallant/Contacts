@@ -1,50 +1,48 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Contacts.Default" %>
+<%@ Register assembly="Contacts" namespace="Contacts.controls" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     
-    <script type="text/javascript" src="/js/jquery.tablesorter.js"></script> 
-    <script>
-    $(document).ready(function() 
-    { 
-        $("[id$='gvMain']").tablesorter(); 
-    } 
-    ); 
-    </script>
-
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="col-lg-2">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <h2>WebForm Demo</h2>
+            <ul>
+                <li>Use Custom WebControls as Plug-ins</li>
+                <li>Use Custom WebControls to Render Repeatable Structure</li>
+                <li>Create Database Objects</li>
+                <li>Structure to Support Bootstrap</li>
+                <li>Demonstrate Rich ToolBox Controls</li>
+                <li>Demonstrate Rapid Development</li>
+            </ul>
+        </div>
+        <div class="col-lg-2"></div>
     </div>
-    <div class="col-lg-8">
-        <a href="Edit.aspx">Create New</a>
-        <asp:GridView runat="server" ID="gvMain" AutoGenerateColumns="false" BorderStyle="None" CssClass="table" OnRowCommand="gvMain_RowCommand">
-            <Columns>
-                <asp:BoundField DataField="Name" HeaderText="Name" />
-                <asp:BoundField DataField="Address" HeaderText="Address" />
-                <asp:BoundField DataField="City" HeaderText="City" />
-                <asp:BoundField DataField="State" HeaderText="State" />
-                <asp:BoundField DataField="Zip" HeaderText="Zip" />
-                <asp:BoundField DataField="Email" HeaderText="Email" />
-                <asp:BoundField DataField="Twitter" HeaderText="Twitter" />
-                <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:LinkButton runat="server" Text="Edit" CommandName="Edit" CommandArgument=<%#DataBinder.Eval(Container.DataItem, "ContactID")%>></asp:LinkButton>
-                        </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField>
-                    <ItemTemplate>
-                            <asp:LinkButton runat="server" Text="Details" CommandName="Details" CommandArgument=<%#DataBinder.Eval(Container.DataItem, "ContactID")%>></asp:LinkButton>
-                        </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField>
-                    <ItemTemplate>
-                            <asp:LinkButton runat="server" Text="Delete" CommandName="Delete" CommandArgument=<%#DataBinder.Eval(Container.DataItem, "ContactID")%>></asp:LinkButton>
-                        </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <hr />
+        </div>
+        <div class="col-lg-2"></div>
     </div>
-    <div class="col-lg-2">
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2"><img src="images/face.png" /></div>
+        <div class="col-lg-6">
+            <dl class="dl-horizontal">
+                <dt>Slide Share</dt><dd><a href="http://www.slideshare.net/apallant">http://www.slideshare.net/apallant</a></dd>
+                <dt>GitHub</dt><dd><a href="https://github.com/andrewpallant/Contacts">https://github.com/andrewpallant/Contacts</a></dd>
+                <dt>LinkedIn</dt><dd><a href="http://ca.linkedin.com/in/andrewpallant/">http//ca.linkedin.com/in/andrewpallant/</a></dd>
+                <dt>Twitter</dt><dd><a href="https://twitter.com/LdnDeveloper">https://twitter.com/LdnDeveloper</a></dd>
+                <dt>Web URL</dt><dd><a href="http://www.LdnDeveloper.com">http://www.LdnDeveloper.com</a></dd>
+            </dl>
+        </div>
+        <div class="col-lg-2"></div>
     </div>
+    
 </asp:Content>
