@@ -116,7 +116,8 @@ namespace Contacts
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             conn.Open();
-            SqlCommand cmd = new SqlCommand(String.Format("SELECT top 1 * FROM ContactPhones WHERE contactPhoneID={0}", contactPhoneID), conn);
+            SqlCommand cmd = new SqlCommand("SELECT top 1 * FROM ContactPhones WHERE contactPhoneID=@contactPhoneID", conn);
+            cmd.Parameters.AddWithValue("@contactPhoneID", contactPhoneID);
             SqlDataReader reader = cmd.ExecuteReader();
 
             if (reader.Read())
