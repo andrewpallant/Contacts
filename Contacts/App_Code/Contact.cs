@@ -129,14 +129,22 @@ namespace Contacts
             String sql = "";
             if (ContactID>0)
             {
-                sql = String.Format("UPDATE Contacts SET Name='{1}', Address='{2}', City='{3}', State='{4}', Zip='{5}', Email='{6}', Twitter='{7}' OUTPUT INSERTED.* WHERE ContactID={0}", ContactID, Name, Address, City, State, Zip, Email, Twitter);
+                sql = "UPDATE Contacts SET Name=@Name, Address=@Address, City=@City, State=@State, Zip=@Zip, Email=@Email, Twitter=@Twitter OUTPUT INSERTED.* WHERE ContactID=@ContactID";
             }
             else
             {
-                sql = String.Format("INSERT INTO Contacts (Name, Address, City, State, Zip, Email, Twitter) OUTPUT INSERTED.* VALUES ('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')", ContactID, Name, Address, City, State, Zip, Email, Twitter);
+                sql = "INSERT INTO Contacts (Name, Address, City, State, Zip, Email, Twitter) OUTPUT INSERTED.* VALUES (@Name, @Address, @City, @State, @Zip, @Email, @Twitter)";
             }
 
             SqlCommand cmd = new SqlCommand(sql, conn);
+            if (ContactID > 0) cmd.Parameters.AddWithValue("@ContactID", ContactID);
+            cmd.Parameters.AddWithValue("@Name", Name);
+            cmd.Parameters.AddWithValue("@Address", Address);
+            cmd.Parameters.AddWithValue("@City", City);
+            cmd.Parameters.AddWithValue("@State", State);
+            cmd.Parameters.AddWithValue("@Zip", Zip);
+            cmd.Parameters.AddWithValue("@Email", Email);
+            cmd.Parameters.AddWithValue("@Twitter", Twitter);
 
             cmd.ExecuteNonQuery();
 

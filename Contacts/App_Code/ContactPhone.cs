@@ -85,14 +85,18 @@ namespace Contacts
             String sql = "";
             if (ContactPhoneId > 0)
             {
-                sql = String.Format("UPDATE ContactPhones SET PhoneNumber='{1}', ContactID='{2}', Type='{3}' OUTPUT INSERTED.* WHERE ContactPhoneID={0}", ContactPhoneId, PhoneNumber, ContactID, Type);
+                sql = String.Format("UPDATE ContactPhones SET PhoneNumber=@PhoneNumber, ContactID=@ContactID, Type=@Type OUTPUT INSERTED.* WHERE ContactPhoneID=@ContactPhoneID", ContactPhoneId, PhoneNumber, ContactID, Type);
             }
             else
             {
-                sql = String.Format("INSERT INTO ContactPhones (PhoneNumber, ContactID, Type ) OUTPUT INSERTED.* VALUES ('{0}', '{1}', '{2}')", PhoneNumber, ContactID, Type);
+                sql = String.Format("INSERT INTO ContactPhones (PhoneNumber, ContactID, Type ) OUTPUT INSERTED.* VALUES (@PhoneNumber, @ContactID, @Type)", PhoneNumber, ContactID, Type);
             }
 
             SqlCommand cmd = new SqlCommand(sql, conn);
+            if (ContactPhoneId > 0) cmd.Parameters.AddWithValue("@ContactPhoneId",ContactPhoneId);
+            cmd.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+            cmd.Parameters.AddWithValue("@ContactID", ContactID);
+            cmd.Parameters.AddWithValue("@Type", Type);
 
             cmd.ExecuteNonQuery();
 

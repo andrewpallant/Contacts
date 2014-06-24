@@ -88,7 +88,7 @@ namespace Contacts
             contact.Save();
 
             // Assume Saved - Should Really Check for return
-            Response.Redirect("~/Default.aspx");
+            Response.Redirect("~/ContactListing.aspx");
         }
 
         
