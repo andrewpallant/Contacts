@@ -57,7 +57,8 @@ namespace Contacts
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand(String.Format("SELECT * FROM Contacts WHERE ContactID={0}", id), conn);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Contacts WHERE ContactID=@ContactID", conn);
+            cmd.Parameters.AddWithValue("@ContactID", id);
             SqlDataReader reader = cmd.ExecuteReader();
             if(reader.Read())
             {
@@ -107,9 +108,10 @@ namespace Contacts
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             conn.Open();
 
-            String sql = String.Format("DELETE FROM Contacts OUTPUT DELETED.* WHERE ContactID={0}", ContactID);
+            String sql = "DELETE FROM Contacts OUTPUT DELETED.* WHERE ContactID=@ContactID";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@ContactID", ContactID);
 
             cmd.ExecuteNonQuery();
 

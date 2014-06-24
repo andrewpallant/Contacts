@@ -34,7 +34,9 @@ namespace Contacts
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             conn.Open();
-            SqlCommand cmd = new SqlCommand(String.Format("SELECT * FROM ContactPhones WHERE ContactID={0}", contactID), conn);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM ContactPhones WHERE ContactID=@ContactID", conn);
+            cmd.Parameters.AddWithValue("@ContactID", contactID);
+
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -62,11 +64,11 @@ namespace Contacts
             String sql = "";
             if (ContactPhoneId > 0)
             {
-                sql = String.Format("DELETE FROM ContactPhones WHERE ContactPhoneID={0}", ContactPhoneId);
+                sql = "DELETE FROM ContactPhones WHERE ContactPhoneID=@ContactPhoneID";
             }
 
             SqlCommand cmd = new SqlCommand(sql, conn);
-
+            cmd.Parameters.AddWithValue("@ContactPhoneID", ContactPhoneId);
             cmd.ExecuteNonQuery();
 
             if (conn.State > 0)
@@ -85,11 +87,11 @@ namespace Contacts
             String sql = "";
             if (ContactPhoneId > 0)
             {
-                sql = String.Format("UPDATE ContactPhones SET PhoneNumber=@PhoneNumber, ContactID=@ContactID, Type=@Type OUTPUT INSERTED.* WHERE ContactPhoneID=@ContactPhoneID", ContactPhoneId, PhoneNumber, ContactID, Type);
+                sql = "UPDATE ContactPhones SET PhoneNumber=@PhoneNumber, ContactID=@ContactID, Type=@Type OUTPUT INSERTED.* WHERE ContactPhoneID=@ContactPhoneID";
             }
             else
             {
-                sql = String.Format("INSERT INTO ContactPhones (PhoneNumber, ContactID, Type ) OUTPUT INSERTED.* VALUES (@PhoneNumber, @ContactID, @Type)", PhoneNumber, ContactID, Type);
+                sql = "INSERT INTO ContactPhones (PhoneNumber, ContactID, Type ) OUTPUT INSERTED.* VALUES (@PhoneNumber, @ContactID, @Type)";
             }
 
             SqlCommand cmd = new SqlCommand(sql, conn);
